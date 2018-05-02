@@ -10,16 +10,17 @@ end
 users = User.all
 
 50.times do
+    name = Faker::App.name
     RegisteredApplication.create!(
         user:  users.sample,
-        name:  Faker::StarTrek.character,
-        url:   "www." + Faker::StarTrek.location + ".com"
+        name:  name,
+        url:   "www." + name + ".com"
     )
 end
 
 applications = RegisteredApplication.all
 
-200.times do 
+2500.times do 
     Event.create!(
         registered_application: applications.sample,
         name: Faker::Hacker.verb
