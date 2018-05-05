@@ -21,10 +21,12 @@ end
 applications = RegisteredApplication.all
 
 2500.times do 
-    Event.create!(
+    event = Event.create!(
         registered_application: applications.sample,
         name: Faker::Hacker.verb
         )
+        
+    event.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
 end
 
 
